@@ -21,11 +21,11 @@ const ensureAuthMiddleware = async(req: Request, res: Response, next: NextFuncti
             })
         }
         
-        req.user = {
+        req.body = {
             id: decoded.sub as number,
             type: decoded.type
         }
-
+        console.log(req)
         return next()
     })
 
