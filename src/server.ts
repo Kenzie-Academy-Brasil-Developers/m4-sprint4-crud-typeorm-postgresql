@@ -7,8 +7,8 @@ import AppDataSource from "./data-source";
     .catch((err) => {
         console.error("Error during Data Source initialization", err)
     })
-    
+    console.log("Database connected!")
     app.listen(3000, () => {
-        console.log("Servidor executando")
+        console.log("Server running in port 3000")
     })    
-})()
+})()    
