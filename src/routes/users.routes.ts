@@ -1,7 +1,7 @@
 import { Router } from "express";
 import app from "../app";
 import { createUserController,listUsersController, updateUserController, deleteUserController } from "../controllers"
-import ensureAuthMiddleware from "../middlewares/ensureAuth.Middleware";
+import { ensureAuthMiddleware } from "../middlewares/ensureAuth.middleware"
 import ensureDataIsValidMiddleware from "../middlewares/ensureDataIsValid.middleware";
 import { createUserSerializer } from "../serializers/user.serializers";
 
@@ -12,4 +12,4 @@ userRoutes.get("", ensureAuthMiddleware, listUsersController)
 userRoutes.patch("/:id", ensureAuthMiddleware, updateUserController)
 userRoutes.delete("/:id", ensureAuthMiddleware, deleteUserController)
 
-export default userRoutes
+export default userRoutes 

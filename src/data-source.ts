@@ -3,9 +3,6 @@ import "reflect-metadata"
 import path from "path"
 import { DataSource } from "typeorm"
 
-require('dotenv').config()
-console.log(process.env.PORT)
-
 const AppDataSource = new DataSource(
     process.env.NODE_ENV === "test" ?
     {

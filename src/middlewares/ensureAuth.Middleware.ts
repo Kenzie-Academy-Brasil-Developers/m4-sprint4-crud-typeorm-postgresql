@@ -31,4 +31,4 @@ const ensureAuthMiddleware = async(req: Request, res: Response, next: NextFuncti
 
 }
 
-export default ensureAuthMiddleware
+export { ensureAuthMiddleware }

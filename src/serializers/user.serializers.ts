@@ -1,6 +1,6 @@
 import * as yup from "yup"
 import { SchemaOf } from "yup"
-import { IUserRequest, IUser } from "../interfaces/users"
+import { IUserRequest, IUser } from "../interfaces/users/users.interfaces"
 
 const createUserSerializer: SchemaOf<IUserRequest> = yup.object().shape({
     name: yup.string().required(),
