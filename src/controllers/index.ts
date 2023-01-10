@@ -6,7 +6,7 @@ import {
     createUserController,
     listUsersController,
     updateUserController,
-    deleteUserController 
+    softDeleteUserController 
 } from "./users/users.controllers"
 
 export {
@@ -14,5 +14,5 @@ export {
     createUserController,
     listUsersController,
     updateUserController,
-    deleteUserController,
+    softDeleteUserController,
 }

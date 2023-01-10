@@ -1,12 +1,18 @@
-import AppDataSource from '../../data-source'
-import { User } from '../../entities/user.entity'
+import AppDataSource from "../../data-source"
+import { User } from "../../entities/user.entity"
+import { IUser } from "../../interfaces"
+import { listUsersSerializer } from "../../serializers/user.serializers"
 
-const listUserService = async (): Promise<User[]> => {
-    
+const listUserService = async (): Promise<IUser[]> => {
+
     const userRepository = AppDataSource.getRepository(User)
     const users = await userRepository.find()
 
-    return users
+    const listUsers = await listUsersSerializer.validate(users, {
+        stripUnknown: true
+    })
+
+    return listUsers
 }
 
 export default listUserService

@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { IUserRequest, IUserUpdate } from "../../interfaces";
-
-import { createUserService, listUserService, updateUserService, deleteUserService } from "../../services";
+import { createUserService, listUserService, updateUserService, softDeleteUserService } from "../../services";
 
 const createUserController = async (req: Request, res: Response) => {
     const newUserData: IUserRequest = req.body
@@ -16,17 +15,20 @@ const listUsersController = async (req: Request, res: Response) => {
 
 const updateUserController = async (req: Request, res: Response) => {
     const updateUserData: IUserUpdate = req.body
-    // const updatedUser = await updateUserService(updateUserData)
-    // return res.status(200).json(updatedUser)
+    const updateUserId = req.params.id
+    const updateUser = await updateUserService(updateUserData, updateUserId)
+    return res.json(updateUser)
 }
 
-const deleteUserController = async (req: Request, res: Response) => {
-
+const softDeleteUserController = async (req: Request, res: Response) => {
+    const softDeleteUserId = req.params.id
+    const softDeleteUser = await softDeleteUserService(softDeleteUserId)
+    return res.status(204).json(softDeleteUser)
 }
 
 export { 
     createUserController, 
     listUsersController,
     updateUserController,
-    deleteUserController 
+    softDeleteUserController
 }
